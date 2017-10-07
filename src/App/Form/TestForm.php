@@ -9,6 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 class TestForm
 {
     private $app;
+
     /*
      * @return TestForm
      */
