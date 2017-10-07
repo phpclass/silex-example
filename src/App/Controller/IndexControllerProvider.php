@@ -7,10 +7,29 @@ use Silex\Api\ControllerProviderInterface;
 use Silex\ControllerCollection;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-
+use Twig_Environment;
+use App\Form\TestForm;
 class IndexControllerProvider implements ControllerProviderInterface
 {
     private $app;
+
+    public function formAction(Request $request)
+    {
+        /* @var $twig Twig_Environment*/
+        $twig=$this->app['twig'];
+
+        $form = new TestForm($this->app);
+
+        $twig_params=[
+            'title' => "Наша тестовая форма",
+            'form' => $form->buildForm()->createView()
+        ];
+
+        $response = $twig->render('form.html.twig', $twig_params);
+        return Response::create($response, 200);
+
+    }
+
     public function indexAction(Request $request){
         $name = $request->get('name' , '!');
         $id = $request->get('id' );
