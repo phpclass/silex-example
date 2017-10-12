@@ -14,6 +14,12 @@ class IndexControllerProvider implements ControllerProviderInterface
 {
     private $app;
 
+    public function addAction(Request $request) {
+        $name = $request->get('name');
+        $name = str_replace('form/', '', $name);
+        return Response::create('Add' . $name, 404);
+    }
+
     public function formAction(Request $request)
     {
         /* @var $twig Twig_Environment */
