@@ -6,10 +6,8 @@ use Silex\Application;
 use Symfony\Component\Form\FormFactory;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
-//use TextT
 
-
-class TestForm
+class TestRelationForm
 {
     private $app;
 
@@ -28,12 +26,14 @@ class TestForm
         $form_factory = $this->app['form.factory'];
         $form = $form_factory->createBuilder()
             ->add("name")
-            ->add('email');
-        $form->add('testRelation', EntityType::class, [
-            'class' => 'App:TestRelation',
-            'choice_label' => 'tratata',
-        ]);
-        $form->getForm();
+//            ->add('phonenumbers', EntityType::class, [
+//                'class'=>'AppBundle:Test',
+//                'choice_label' => 'phonenumbers',
+//            ])
+            ->add('submit', SubmitType::class, [
+                'label' => 'Add',
+            ])
+            ->getForm();
 
 
         return $form;

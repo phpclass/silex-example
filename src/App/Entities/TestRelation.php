@@ -97,4 +97,9 @@ class TestRelation
     {
         return $this->phonenumbers;
     }
+
+    public function __toString()
+    {
+        return $this->name;
+    }
 }
