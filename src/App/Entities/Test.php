@@ -138,4 +138,10 @@ class Test
     {
         return $this->testRelation;
     }
+
+    public function __toString()
+    {
+        return $this->name;
+    }
+
 }
